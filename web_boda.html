@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¡Nos casamos!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    <style>
+        /* Tipografía y colores base */
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fff8f5;
+            color: #333;
+        }
+
+        section {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+        }
+
+
+        .landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+
+        .landing h1 {
+            font-size: 3rem;
+            color: #b35d5d;
+            margin-bottom: 1rem;
+        }
+
+        .landing img {
+            max-width: 400px;
+            /* Ajusta el tamaño máximo deseado */
+            width: 100%;
+            /* Para que sea responsive y se adapte en móvil */
+            height: auto;
+            /* Mantiene proporción */
+            margin: 1rem 0;
+            /* Espacio arriba y abajo */
+            object-fit: contain;
+            /* Por si quieres que se ajuste bien */
+        }
+
+
+        .section {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            flex-wrap: wrap;
+            position: relative;
+            /* Añadido para posicionar las imágenes */
+        }
+
+        .section.bg-claro {
+            background-color: #fdf1ec;
+            max-width: none;
+            /* quita la restricción */
+            margin: 0;
+            /* quita centrar */
+            width: 100vw;
+            /* ocupa todo el ancho */
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            padding: 4rem 0;
+            /* ajuste vertical */
+        }
+
+        /* El wrapper centrado y con flex para contenido */
+        .bg-claro-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            /* Igual que la .section normal */
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: stretch;
+        }
+
+        /* Flex normal dentro del wrapper */
+        .section.bg-claro .bg-claro-wrapper {
+            flex-direction: row;
+        }
+
+        /* Flex reverse dentro del wrapper si la sección tiene .reverse */
+        .section.bg-claro.reverse .bg-claro-wrapper {
+            flex-direction: row-reverse;
+        }
+
+        /* Ajustes para mantener márgenes negativos y superposición */
+        .section.bg-claro:not(.reverse) .text-col1.extendida {
+            margin-left: -100px;
+            margin-right: 0;
+            border-radius: 0 0 0 20px;
+        }
+
+        .section.bg-claro.reverse .text-col2.extendida {
+            margin-right: -100px;
+            margin-left: 0;
+            border-radius: 0 0 20px 0;
+        }
+
+
+        .section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .text-col1,
+        .text-col2 {
+            flex: 1 1 45%;
+            min-width: 300px;
+            padding: 2rem;
+            color: white;
+            display: flex;
+            /* Añadido para centrar contenido verticalmente */
+            flex-direction: column;
+            /* Añadido para centrar contenido verticalmente */
+            justify-content: center;
+            /* Añadido para centrar contenido verticalmente */
+            align-items: flex-start;
+            /* Alineación inicial a la izquierda */
+            box-sizing: border-box;
+            /* Para que el padding no aumente el tamaño */
+        }
+
+        .section:not(.reverse) .text-col1 {
+            /* Ajuste para el cuadro en el lado izquierdo */
+            background-color: #63694d;
+            margin-left: 25px;
+            /* Empuja el cuadro hacia la derecha */
+        }
+
+        .section.reverse .text-col2 {
+            /* Ajuste para el cuadro en el lado derecho */
+            background-color: #a6607a;
+            margin-right: 25px;
+            /* Empuja el cuadro hacia la izquierda */
+        }
+
+
+        .text-col1 h2,
+        .text-col2 h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .text-col1 p,
+        .text-col2 p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: white;
+            text-align: left;
+            /* Asegura que el texto esté alineado a la izquierda */
+        }
+
+        .img-col {
+            flex: 1 1 45%;
+            min-width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            /* Necesario para el posicionamiento de la imagen */
+            z-index: 1;
+            /* Para que la imagen se superponga */
+        }
+
+        .img-col img {
+            width: 105%;
+            /* Hace que la imagen sea ligeramente más ancha que el 100% para superponer */
+            height: calc(100% + 50px);
+            /* Ocupa lo mismo que el cuadro y sobresale por arriba */
+            object-fit: cover;
+            border-radius: 12px;
+            position: absolute;
+            /* Permite posicionar la imagen con exactitud */
+            top: -25px;
+            /* Sobresale 25px por arriba */
+            bottom: -25px;
+            /* Queda 25px corta por abajo */
+            left: -15px;
+            /* Superposición ligera a la izquierda */
+            right: -15px;
+            /* Superposición ligera a la derecha */
+        }
+
+        /* Ajuste específico para la superposición de la imagen cuando está a la izquierda */
+        .section:not(.reverse) .img-col img {
+            left: -25px;
+            /* Más superposición hacia la izquierda */
+            right: auto;
+        }
+
+        /* Ajuste específico para la superposición de la imagen cuando está a la derecha */
+        .section.reverse .img-col img {
+            right: -25px;
+            /* Más superposición hacia la derecha */
+            left: auto;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .img-col {
+                order: -1;
+                /* Mueve la imagen arriba en móviles */
+                margin-bottom: 2rem;
+            }
+
+            .img-col img {
+                width: 100%;
+                height: auto;
+                position: static;
+                /* Elimina el posicionamiento absoluto en móviles */
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .text-col1,
+            .text-col2 {
+                margin: 0;
+                /* Elimina los márgenes en móviles */
+                padding: 1.5rem;
+                /* Ajusta el padding en móviles */
+                align-items: center;
+                /* Centra el texto en móviles */
+                text-align: center;
+            }
+
+            .text-col1 p,
+            .text-col2 p {
+                text-align: center;
+                /* Centra el texto en móviles */
+            }
+
+            .text-col1 h2,
+            .text-col2 h2 {
+                font-size: 1.5rem;
+            }
+
+            .text-col1,
+            .text-col2 {
+                background-color: #61684e;
+                border-radius: 16px;
+                padding: 2rem;
+                width: 100%;
+                box-sizing: border-box;
+                margin: 0 auto;
+            }
+
+            .section.reverse .text-col2 {
+                background-color: #a6607a;
+            }
+
+            .section:not(.reverse) .text-col1 {
+                background-color: #63694d;
+            }
+
+            .text-col1.extendida,
+            .text-col2.extendida {
+                margin: 0 !important;
+                border-radius: 16px !important;
+                padding: 2rem !important;
+            }
+        }
+
+        .tally-btn {
+            background-color: #d3a8b2;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tally-btn:hover {
+            background-color: #c6b7a4;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+        }
+
+
+
+        .sidebar {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: none;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin: 0.5rem 0;
+        }
+
+        .sidebar a:hover {
+            background-color: #b35d5d;
+            cursor: pointer;
+            color: #fff
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.9rem;
+            color: #7a4e4e;
+            text-decoration: none;
+            background-color: transparent;
+            border-radius: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .sidebar a::before {
+            content: "";
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #7a4e4e;
+            border-radius: 50%;
+        }
+
+        .sidebar a.active {
+            background-color: #f1e2db;
+            font-weight: bold;
+        }
+
+        .sidebar a.active::before {
+            background-color: #a6607a;
+        }
+
+        @media (min-width: 1024px) {
+            .section {
+                display: flex;
+                align-items: stretch;
+            }
+
+            .img-col.descentrada {
+                position: relative;
+                z-index: 2;
+                flex: 1;
+            }
+
+            .img-col.descentrada img {
+                width: 100%;
+                height: auto;
+                margin-top: -30px;
+                border-radius: 12px;
+                display: block;
+            }
+
+
+            .text-col1.extendida,
+            .text-col2.extendida {
+                position: relative;
+                z-index: 1;
+                background-color: #61684e;
+                /* Asegúrate de usar el color adecuado aquí */
+                margin-left: -100px;
+                /* Empuja bajo la imagen */
+                padding: 4rem 5rem 4rem 6rem;
+                border-radius: 0 0 0 20px;
+                flex: 1.1;
+                color: #fff;
+            }
+
+            .reverse .text-col2.extendida {
+                margin-left: 0;
+                margin-right: -100px;
+                /* En caso de reverse */
+                border-radius: 0 0 20px 0;
+            }
+        }
+
+        .regalo {
+            padding: 20rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            display: block;
+            min-height: auto;
+            /* opcional: quita la altura mínima innecesaria */
+        }
+
+        .regalo p {
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .regalo h1 {
+            font-size: 3rem;
+            color: #b35d5d;
+            margin-bottom: 3rem;
+        }
+
+        /* Mostrar solo en escritorio */
+        @media (min-width: 1024px) {
+            .sidebar {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="landing" id="landing">
+        <h1>¡Nos casamos!</h1>
+        <img src="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/logo.png" alt="Foto de ejemplo">
+        <p>Y queremos celebrarlo contigo</p>
+    </section>
+
+    <section class="section" id="finca">
+        <div class="img-col descentrada">
+            <img src="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/playa.jpg" alt="Foto de ejemplo">
+        </div>
+        <div class="text-col2 extendida">
+            <h2>La finca</h2>
+            <p>Nos casamos el <strong>10 de mayo de 2026</strong> en la <strong>Finca Los Álamos</strong>, a las
+                <strong>17:00</strong>. Será una ceremonia especial y una fiesta inolvidable. ¡No puedes faltar!
+            </p>
+        </div>
+    </section>
+
+    <section class="section reverse" id="plan">
+        <div class="img-col descentrada">
+            <img src="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/espejo.jpg" alt="Foto pareja 2">
+        </div>
+        <div class="text-col2 extendida">
+            <h2>El plan</h2>
+            <p>Aquí se hablará sobre los horarios y esas cosas</p>
+        </div>
+    </section>
+
+    <section class="section bg-claro" id="organizacion">
+        <div class="bg-claro-wrapper">
+            <div class="img-col descentrada">
+                <img src="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/banco.jpg"
+                    alt="Foto pareja 2">
+            </div>
+            <div class="text-col2 extendida">
+                <h2>La organización</h2>
+                <p>Aquí se hablará de cómo llegar, de que puede que haya autobuses, y de que recomendamos alojarse en Rascafría.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section reverse bg-claro" id="confirmacion">
+        <div class="bg-claro-wrapper">
+            <div class="img-col descentrada">
+                <img src="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/fotos.jpg"
+                    alt="Foto pareja 3">
+            </div>
+            <div class="text-col2 extendida">
+                <h2>La confirmación</h2>
+                <p>Rellena el siguiente formulario para confirmar tu asistencia. ¡Gracias por acompañarnos en este día
+                    tan
+                    importante!</p>
+                <p><button class="tally-btn" data-tally-open="3q86p7" data-tally-emoji-text="👋"
+                        data-tally-emoji-animation="wave">
+                        Confirmar asistencia
+                    </button>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="regalo" id="regalo">
+        <h1>El regalo</h1>
+        <p>Hay una razón por la que siempre esta parte está al final de las webs de bodas, y es porque a todos nos da un
+            poco de vergüenza. Así que hagamos este trámite rápido, pero permitidnos decir la frase hecha, que no por
+            hecha es menos cierta (porque lo es, es muy, muy cierta): <b>para nosotros, lo importante es que
+                vengáis</b>. Esto es solo para los que quieran, y como quieran, hacer un regalo. Bla, bla, bla, cliché.
+            Pero es que es de verdad: de corazón, si
+            estás leyendo esto es porque queremos de verdad que estés con nosotros este día, así que, por favor, no te
+            sientas obligado lo más mínimo. De corazón.</p>
+        <p>Lo dicho. Hagamos este trámite rápido. Nuestro número de cuenta es:</p>
+        <h2><strong>ES28 0182 5322 2100 0174 3748</strong></h2>
+    </section>
+
+    <nav class="sidebar">
+        <ul>
+            <li><a href="#landing">Inicio</a></li>
+            <li><a href="#finca">La finca</a></li>
+            <li><a href="#plan">El plan</a></li>
+            <li><a href="#organizacion">La organización</a></li>
+            <li><a href="#confirmacion">La confirmación</a></li>
+            <li><a href="#regalo">El regalo</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        // Scroll suave reforzado (solo si hiciera falta)
+        document.querySelectorAll('.sidebar a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Intersección para detectar la sección activa
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".sidebar a");
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+                    });
+                }
+            });
+        }, {
+            threshold: 0.6 // Sección visible en al menos 60%
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+
+</html>
