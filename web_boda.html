@@ -5,13 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>¡Nos casamos!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Source+Sans+3:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <script async src="https://tally.so/widgets/embed.js"></script>
     <style>
         /* Tipografía y colores base */
         body {
             margin: 0;
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Source Sans 3', sans-serif;
             scroll-behavior: smooth;
             background-color: #fff8f5;
             color: #333;
@@ -27,35 +29,42 @@
 
 
         .landing {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  text-align: center;
-}
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
 
-
+            /* 🔽 Fondo imagen */
+            background-image: url("https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/playa_fondo.jpg");
+            background-size: cover;
+            /* que cubra toda la pantalla */
+            background-position: center;
+            /* centrada */
+            background-repeat: no-repeat;
+            /* que no se repita */
+            color: white;
+            /* texto legible sobre la foto */
+        }
 
         .landing h1 {
             font-size: 3rem;
-            color: #b35d5d;
             margin-bottom: 1rem;
+            /* mejor contraste */
+        }
+
+        .landing p {
+            font-size: 1.5rem;
         }
 
         .landing img {
             max-width: 400px;
-            /* Ajusta el tamaño máximo deseado */
             width: 100%;
-            /* Para que sea responsive y se adapte en móvil */
             height: auto;
-            /* Mantiene proporción */
             margin: 1rem 0;
-            /* Espacio arriba y abajo */
-            object-fit: contain;
-            /* Por si quieres que se ajuste bien */
         }
+
 
 
         .section {
@@ -114,13 +123,13 @@
         .section.bg-claro:not(.reverse) .text-col1.extendida {
             margin-left: -100px;
             margin-right: 0;
-            border-radius: 0 0 0 20px;
+            border-radius: 0 0 0 0px;
         }
 
         .section.bg-claro.reverse .text-col2.extendida {
             margin-right: -100px;
             margin-left: 0;
-            border-radius: 0 0 20px 0;
+            border-radius: 0 0 0px 0;
         }
 
 
@@ -163,14 +172,14 @@
 
         .text-col1 h2,
         .text-col2 h2 {
-            font-size: 2rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
             color: white;
         }
 
         .text-col1 p,
         .text-col2 p {
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             line-height: 1.6;
             color: white;
             text-align: left;
@@ -413,6 +422,96 @@
             }
         }
 
+        /* ESTILOS ESPECIALES */
+
+        /* Bloque de horario */
+
+        .horario {
+            padding: 20rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            display: block;
+            min-height: auto;
+            /* opcional: quita la altura mínima innecesaria */
+        }
+
+        .horario p {
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            font-size: 1.5rem;
+        }
+
+        .horario h1 {
+            font-size: 3rem;
+            color: #b35d5d;
+            margin-bottom: 3rem;
+        }
+
+        /* Alojamiento */
+
+        .alojamiento {
+            max-width: 1200px;
+            margin: 0 auto;
+            /* centra el contenido */
+            padding: 5rem 4rem;
+            /* espacio lateral para que no se clipée */
+            box-sizing: border-box;
+            background-color: #88987c;
+        }
+
+
+        .alojamiento h1 {
+            font-size: 2.5rem;
+            color: #b35d5d;
+        }
+
+        .alojamiento p {
+            display: block;
+            /* flujo normal, no flex */
+            padding: 5rem 20rem;
+            /* suficiente espacio lateral */
+            box-sizing: border-box;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            font-size: 1.5rem;
+        }
+
+        .alojamiento-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .alojamiento-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .alojamiento-item {
+            background-color: #f9f3ef;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            /* controla el espacio entre nombre, teléfono y web */
+        }
+
+        .alojamiento-item a {
+            color: #b35d5d;
+            text-decoration: none;
+        }
+
+        .alojamiento-item a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* Regalo */
+
         .regalo {
             padding: 20rem 2rem;
             max-width: 800px;
@@ -426,12 +525,25 @@
         .regalo p {
             margin-bottom: 2.5rem;
             line-height: 1.6;
+            font-size: 1.5rem;
         }
 
         .regalo h1 {
             font-size: 3rem;
             color: #b35d5d;
             margin-bottom: 3rem;
+        }
+
+
+        /* Titulares con Instrument Serif */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Instrument Serif', serif;
+            letter-spacing: 2px;
         }
 
         /* Mostrar solo en escritorio */
@@ -446,9 +558,7 @@
 <body>
 
     <section class="landing" id="landing">
-        <h1>¡Nos casamos!</h1>
-        <img src="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/logo.png" alt="Foto de ejemplo">
-        <p>Y queremos celebrarlo contigo</p>
+        <img src="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/logo_test.png" alt="Foto de ejemplo">
     </section>
 
     <section class="section" id="finca">
@@ -457,9 +567,16 @@
         </div>
         <div class="text-col2 extendida">
             <h2>La finca</h2>
-            <p>Nos casamos el <strong>10 de mayo de 2026</strong> en la <strong>Finca Los Álamos</strong>, a las
-                <strong>17:00</strong>. Será una ceremonia especial y una fiesta inolvidable. ¡No puedes faltar!
+            <p>El <strong>25 de julio de 2026 a las 18:00 </strong> nos damos el “sí, quiero” en la <strong>Finca Los
+                    Calizos, en Rascafría</strong>.
+                Un rincón rodeado de naturaleza, con encanto serrano y vistas que hacen suspirar.
+                Queremos que vengáis listos para disfrutar de un día mágico, de esos que se guardan en la memoria (y en
+                el carrete del móvil).
             </p>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4217.08387216863!2d-3.8660000229850127!3d40.90328247136535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd415dc79b1702e7%3A0x6f12d8fa4a9056f1!2sFinca%20Los%20Calizos!5e1!3m2!1ses!2ses!4v1756200124534!5m2!1ses!2ses"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
@@ -469,7 +586,13 @@
         </div>
         <div class="text-col2 extendida">
             <h2>El plan</h2>
-            <p>Aquí se hablará sobre los horarios y esas cosas</p>
+            <p>No queremos que vengáis mirando el reloj, pero sí que sepáis que tenemos pensado un día con todo lo que
+                nos hace ilusión: un momento para encontrarnos, otro para dar el paso más importante de nuestra vida
+                juntos, buena comida, brindis y una fiesta que dure hasta que amanezca (o casi).</p>
+            <p>Os citaremos <b>a las 18:00</b>. La ceremonia comenzará a las 19:00, pero si hay un día en que merezca la pena citar antes para no llegar tarde, es este. A vuestra llegada tendréis unos cuantos refrescos, cervezas y aguas de sabores y Guille os irá recibiendo (si no os gusta la conversación, no os preocupéis, para eso están las cervezas).</p>                
+                <p>A las 20:00 empezará el coctel de pie, donde podréis empezar a comer; habrá 18 pases, además de varios puestos de comida, así que podéis venir con hambre. Dos horas después, a las 22:00, comenzará el banquete con sorbete, segundo y postres.</p>
+                <p>Por último, de 00:00 a 05:00 empezará la fiesta. Sabemos que venís por ver cómo nos casamos pero que, en realidad, lo que más os llama es esto: no os preocupéis, habrá mil sorpresas a lo largo de la noche.</p>
+            </p>
         </div>
     </section>
 
@@ -481,8 +604,75 @@
             </div>
             <div class="text-col2 extendida">
                 <h2>La organización</h2>
-                <p>Aquí se hablará de cómo llegar, de que puede que haya autobuses, y de que recomendamos alojarse en Rascafría.
-                </p>
+                <p>Queremos ponéroslo fácil para que solo os preocupéis de disfrutar:</p>
+                <p><strong>Cómo llegar:</strong> La boda será en la Finca Los Calizos; si vais en coche, hay espacio de
+                    sobra para aparcar. Además, estamos viendo la posibilidad de poner autobuses de ida y vuelta desde
+                    Madrid. En cuanto lo tengamos cerrado, os avisaremos para que podáis reservar plaza. </p>
+                <p><strong>Dress code:</strong> Queremos que estéis guapos, pero sobre todo cómodos. Mejor evitar
+                    tacones finos (hay césped) y traer algo de abrigo (fino) porque en la sierra refresca por la noche
+                    (pero no deja de ser julio).</p>
+                <p><strong>Niños:</strong> ¡Por nuestra parte, más que invitadísimos! Si preferís que se queden con
+                    abuelos, no hay problema, pero nosotros encantados de bailar con ellos. Hay mucho césped, así que
+                    podrán hacer el cabra (y mancharse de barro, que es divertidísimo).</p>
+                <p><strong>Contacto:</strong> Si el mismo día surge alguna duda logística, podéis llamar a Noelia
+                    (622165911) que será la encargada de echar una mano. Ella es nuestra wedding planner y os ayudará
+                    con cualquier detalle.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-claro alojamiento" id="alojamiento">
+        <h1>Alojamientos sugeridos</h1>
+        <p class="intro">Nuestra recomendación es que os quedéis en Rascafría. Hay hoteles y casas rurales muy
+            agradables, y así nadie tiene que preocuparse por la vuelta de madrugada. Además, el pueblo es precioso para
+            pasar el fin de semana. En todos los alojamientos podéis decir que vais de parte de <strong>Jorge de la
+                Finca Prados Riveros</strong>. Comentad que vais de su parte porque unos amigos se casan en Los Calizos.
+        </p>
+
+        <div class="alojamiento-grid">
+            <div class="alojamiento-item">
+                <div class="nombre"><strong>Hotel El Rincón de Rascafría</strong></div>
+                <div class="telefono">682 80 25 28 (Rocío y Javier)</div>
+                <div class="web"><a href="http://www.hotelelrinconderascafria.com/">hotelelrinconderascafria.com</a>
+                </div>
+            </div>
+
+            <div class="alojamiento-item">
+                <div class="nombre"><strong>Casas Antiguas del Valle</strong></div>
+                <div class="telefono">649 588 981 (Fabiola)</div>
+                <div class="web"><a href="http://www.casasantiguasdelvalle.es/">casasantiguasdelvalle.es</a></div>
+            </div>
+
+            <div class="alojamiento-item">
+                <div class="nombre"><strong>Apartamentos La Cabaña</strong></div>
+                <div class="telefono">669701504</div>
+                <div class="web"><a
+                        href="http://www.rascafria.eu/Apartamento_rural_La_Cabana.html">rascafria.eu/Apartamento_rural_La_Cabana.html</a>
+                </div>
+            </div>
+
+            <div class="alojamiento-item">
+                <div class="nombre"><strong>Casa Rural El Bosque</strong></div>
+                <div class="telefono">636593914 (Mari Carmen)</div>
+                <div class="web"><a href="http://www.casaruralelbosque.es/">http://www.casaruralelbosque.es</a></div>
+            </div>
+
+            <div class="alojamiento-item">
+                <div class="nombre"><strong>Casa Granero</strong></div>
+                <div class="telefono">606362561</div>
+                <div class="web"><a href="http://www.casagranero.com/">http://www.casagranero.com</a></div>
+            </div>
+
+            <div class="alojamiento-item">
+                <div class="nombre"><strong>Hotel Rural El Valle</strong></div>
+                <div class="telefono">918691213</div>
+                <div class="web"><a href="http://www.hotelruralelvalle.com/">http://www.hotelruralelvalle.com</a></div>
+            </div>
+
+            <div class="alojamiento-item">
+                <div class="nombre"><strong>El Caserón de Trastámara</strong></div>
+                <div class="telefono">620233266 (Maribel)</div>
+                <div class="web"><a href="http://www.caserontrastamara.es/">http://www.caserontrastamara.es</a></div>
             </div>
         </div>
     </section>
@@ -495,9 +685,10 @@
             </div>
             <div class="text-col2 extendida">
                 <h2>La confirmación</h2>
-                <p>Rellena el siguiente formulario para confirmar tu asistencia. ¡Gracias por acompañarnos en este día
-                    tan
-                    importante!</p>
+                <p>El catering insiste en saber cuántos vamos a ser (¡y nosotros también agradecemos la info!). Podéis
+                    hacer una primera confirmación con fecha límite del <strong>1 de enero de 2026</strong>.
+                </p>
+                <p>Puedes confirmar pinchando en este botón:</p>
                 <p><button class="tally-btn" data-tally-open="3q86p7" data-tally-emoji-text="👋"
                         data-tally-emoji-animation="wave">
                         Confirmar asistencia
@@ -510,9 +701,8 @@
     <section class="regalo" id="regalo">
         <h1>El regalo</h1>
         <p>Hay una razón por la que siempre esta parte está al final de las webs de bodas, y es porque a todos nos da un
-            poco de vergüenza. Así que hagamos este trámite rápido, pero permitidnos decir la frase hecha, que no por
-            hecha es menos cierta (porque lo es, es muy, muy cierta): <b>para nosotros, lo importante es que
-                vengáis</b>. Esto es solo para los que quieran, y como quieran, hacer un regalo. Bla, bla, bla, cliché.
+            poco de vergüenza. Así que hagamos este trámite rápido, pero permitidnos decir la frase hecha (que aunque sea tópico, es muy, muy cierta): <b>para nosotros, lo importante es que
+                vengáis</b>. Este apartado es solo para los que quieran, y como quieran, hacer un regalo. Bla, bla, bla, cliché.
             Pero es que es de verdad: de corazón, si
             estás leyendo esto es porque queremos de verdad que estés con nosotros este día, así que, por favor, no te
             sientas obligado lo más mínimo. De corazón.</p>
