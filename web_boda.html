@@ -391,6 +391,87 @@
             background-color: #a6607a;
         }
 
+        /* Burger button */
+.burger {
+    display: none; /* por defecto oculto en escritorio */
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1100;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Sidebar - escritorio */
+.sidebar {
+    position: fixed;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    z-index: 1000;
+    opacity: 0;           /* invisible por defecto */
+    pointer-events: none;  /* no clickeable cuando está oculto */
+    transition: opacity 0.5s ease;
+    display: block;        /* mantener block para poder usar opacity */
+}
+
+/* Solo en escritorio controlamos la visibilidad con opacity */
+@media (min-width: 769px) {
+    .sidebar:not(.visible) {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .sidebar.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* Sidebar - móvil */
+@media (max-width: 768px) {
+    .burger {
+        display: block;
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1100;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    .sidebar {
+        top: 0;
+        right: -250px; /* oculto a la derecha */
+        height: 100vh;
+        width: 250px;
+        transform: none;
+        display: block;
+        opacity: 1;
+        pointer-events: auto;
+        background-color: #fff;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+        transition: right 0.3s ease;
+    }
+
+    .sidebar.visible {
+        right: 0;
+    }
+
+    .sidebar ul {
+        margin-top: 3rem;
+    }
+
+    .sidebar a {
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+}
+
+
         @media (min-width: 1024px) {
             .section {
                 display: flex;
@@ -777,6 +858,11 @@
         <h2><strong>ES28 0182 5322 2100 0174 3748</strong></h2>
     </section>
 
+    <!-- Botón burger (solo visible en móvil) -->
+<button class="burger" id="burger">
+    ☰
+</button>
+
     <nav class="sidebar" id="sidebar">
         <ul>
             <li><a href="#landing">Inicio</a></li>
@@ -790,30 +876,41 @@
 
     <script>
         const sidebar = document.getElementById("sidebar");
-
-        // Mostrar el sidebar solo cuando se hace scroll
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > window.innerHeight * 0.8) {
-                // aparece tras bajar el 80% de la pantalla (ajústalo a tu gusto)
-                sidebar.classList.add("visible");
-            } else {
-                sidebar.classList.remove("visible");
-            }
+        const burger = document.getElementById("burger");
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".sidebar a");
+    
+        // Burger: mostrar/ocultar menú en móvil
+        burger.addEventListener("click", () => {
+            sidebar.classList.toggle("visible");
         });
-
-        // Scroll suave reforzado
-        document.querySelectorAll('.sidebar a').forEach(anchor => {
+    
+        // Scroll suave y cerrar menú en móvil al hacer click
+        navLinks.forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 target.scrollIntoView({ behavior: 'smooth' });
+    
+                // Cerrar menú solo en móvil
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove("visible");
+                }
             });
         });
-
-        // Intersección para detectar la sección activa
-        const sections = document.querySelectorAll("section[id]");
-        const navLinks = document.querySelectorAll(".sidebar a");
-
+    
+        // Mostrar el sidebar flotante en escritorio según scroll
+        window.addEventListener("scroll", () => {
+            if (window.innerWidth > 768) { // solo escritorio
+                if (window.scrollY > window.innerHeight * 0.8) {
+                    sidebar.classList.add("visible");
+                } else {
+                    sidebar.classList.remove("visible");
+                }
+            }
+        });
+    
+        // Intersección para detectar sección activa
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -825,11 +922,10 @@
         }, {
             threshold: 0.6 // Sección visible al menos al 60%
         });
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
+    
+        sections.forEach(section => observer.observe(section));
     </script>
+    
 
 
 </body>
