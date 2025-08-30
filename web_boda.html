@@ -329,7 +329,19 @@
             right: 2rem;
             transform: translateY(-50%);
             z-index: 1000;
+            opacity: 0;
+            /* invisible por defecto */
+            pointer-events: none;
+            /* no clickeable cuando está oculto */
+            transition: opacity 0.5s ease;
+            /* efecto fade */
             display: none;
+        }
+
+        .sidebar.visible {
+            opacity: 1;
+            pointer-events: auto;
+            /* clickeable cuando aparece */
         }
 
         .sidebar ul {
@@ -509,6 +521,28 @@
             text-decoration: underline;
         }
 
+        /* Ajustes responsivos para móvil */
+@media (max-width: 768px) {
+  .alojamiento {
+    padding: 2rem 1rem; /* menos espacio lateral */
+  }
+
+  .alojamiento p {
+    padding: 1rem;      /* quitar el padding brutal */
+    font-size: 1.2rem;  /* letra un poco más pequeña */
+  }
+
+  .alojamiento-grid {
+    grid-template-columns: 1fr; /* ya está, pero aseguramos */
+    gap: 1.5rem;
+  }
+
+  .alojamiento-item {
+    padding: 1rem; /* consistente con el resto */
+  }
+}
+
+
 
         /* Regalo */
 
@@ -546,12 +580,25 @@
             letter-spacing: 2px;
         }
 
-        /* Mostrar solo en escritorio */
-        @media (min-width: 1024px) {
-            .sidebar {
-                display: block;
-            }
-        }
+        .map-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* relación 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+
     </style>
 </head>
 
@@ -563,7 +610,8 @@
 
     <section class="section" id="finca">
         <div class="img-col descentrada">
-            <img src="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/foto_finca.jpg" alt="Foto de ejemplo">
+            <img src="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/foto_finca.jpg"
+                alt="Foto de ejemplo">
         </div>
         <div class="text-col2 extendida">
             <h2>La finca</h2>
@@ -573,10 +621,14 @@
                 Queremos que vengáis listos para disfrutar de un día mágico, de esos que se guardan en la memoria (y en
                 el carrete del móvil).
             </p>
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4217.08387216863!2d-3.8660000229850127!3d40.90328247136535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd415dc79b1702e7%3A0x6f12d8fa4a9056f1!2sFinca%20Los%20Calizos!5e1!3m2!1ses!2ses!4v1756200124534!5m2!1ses!2ses"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4217.08387216863!2d-3.8660000229850127!3d40.90328247136535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd415dc79b1702e7%3A0x6f12d8fa4a9056f1!2sFinca%20Los%20Calizos!5e1!3m2!1ses!2ses!4v1756200124534!5m2!1ses!2ses"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              
         </div>
     </section>
 
@@ -623,6 +675,13 @@
                 <p><strong>Contacto:</strong> Si el mismo día surge alguna duda logística, podéis llamar a Noelia
                     (622165911) que será la encargada de echar una mano. Ella es nuestra wedding planner y os ayudará
                     con cualquier detalle.</p>
+                <p><strong>Sorpresas:</strong> ¿Queréis darnos alguna sorpresa que organicéis para el día de nuestra
+                    boda? ¿Creéis que este es nuestro día, pero queréis ser vosotros los protagonistas? Poneos en
+                    contacto con Noelia, nuestra wedding planner y ella os ayudará a
+                    organizarla sin que nosotros sepamos nada de nada. Si lo que queréis es hablar durante la ceremonia,
+                    podéis escribir a Mario (654 474 681) o Yoli (678 911 998), que serán los maestros de ceremonias
+                    (aunque no prometemos que
+                    se puedan aceptar todas las peticiones, que el tiempo es limitado).</p>
             </div>
         </div>
     </section>
@@ -718,7 +777,7 @@
         <h2><strong>ES28 0182 5322 2100 0174 3748</strong></h2>
     </section>
 
-    <nav class="sidebar">
+    <nav class="sidebar" id="sidebar">
         <ul>
             <li><a href="#landing">Inicio</a></li>
             <li><a href="#finca">La finca</a></li>
@@ -730,7 +789,19 @@
     </nav>
 
     <script>
-        // Scroll suave reforzado (solo si hiciera falta)
+        const sidebar = document.getElementById("sidebar");
+
+        // Mostrar el sidebar solo cuando se hace scroll
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > window.innerHeight * 0.8) {
+                // aparece tras bajar el 80% de la pantalla (ajústalo a tu gusto)
+                sidebar.classList.add("visible");
+            } else {
+                sidebar.classList.remove("visible");
+            }
+        });
+
+        // Scroll suave reforzado
         document.querySelectorAll('.sidebar a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -752,13 +823,14 @@
                 }
             });
         }, {
-            threshold: 0.6 // Sección visible en al menos 60%
+            threshold: 0.6 // Sección visible al menos al 60%
         });
 
         sections.forEach(section => {
             observer.observe(section);
         });
     </script>
+
 
 </body>
 
