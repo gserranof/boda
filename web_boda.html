@@ -392,84 +392,90 @@
         }
 
         /* Burger button */
-.burger {
-    display: none; /* por defecto oculto en escritorio */
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 1100;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-}
+        .burger {
+            display: none;
+            /* por defecto oculto en escritorio */
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1100;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+        }
 
-/* Sidebar - escritorio */
-.sidebar {
-    position: fixed;
-    top: 50%;
-    right: 2rem;
-    transform: translateY(-50%);
-    z-index: 1000;
-    opacity: 0;           /* invisible por defecto */
-    pointer-events: none;  /* no clickeable cuando está oculto */
-    transition: opacity 0.5s ease;
-    display: block;        /* mantener block para poder usar opacity */
-}
+        /* Sidebar - escritorio */
+        .sidebar {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            z-index: 1000;
+            opacity: 0;
+            /* invisible por defecto */
+            pointer-events: none;
+            /* no clickeable cuando está oculto */
+            transition: opacity 0.5s ease;
+            display: block;
+            /* mantener block para poder usar opacity */
+        }
 
-/* Solo en escritorio controlamos la visibilidad con opacity */
-@media (min-width: 769px) {
-    .sidebar:not(.visible) {
-        opacity: 0;
-        pointer-events: none;
-    }
-    .sidebar.visible {
-        opacity: 1;
-        pointer-events: auto;
-    }
-}
+        /* Solo en escritorio controlamos la visibilidad con opacity */
+        @media (min-width: 769px) {
+            .sidebar:not(.visible) {
+                opacity: 0;
+                pointer-events: none;
+            }
 
-/* Sidebar - móvil */
-@media (max-width: 768px) {
-    .burger {
-        display: block;
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-        z-index: 1100;
-        background: none;
-        border: none;
-        font-size: 2rem;
-        cursor: pointer;
-    }
+            .sidebar.visible {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
 
-    .sidebar {
-        top: 0;
-        right: -250px; /* oculto a la derecha */
-        height: 100vh;
-        width: 250px;
-        transform: none;
-        display: block;
-        opacity: 1;
-        pointer-events: auto;
-        background-color: #fff;
-        box-shadow: -2px 0 5px rgba(0,0,0,0.3);
-        transition: right 0.3s ease;
-    }
+        /* Sidebar - móvil */
+        @media (max-width: 768px) {
+            .burger {
+                display: block;
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                z-index: 1100;
+                background: none;
+                border: none;
+                font-size: 2rem;
+                cursor: pointer;
+            }
 
-    .sidebar.visible {
-        right: 0;
-    }
+            .sidebar {
+                top: 0;
+                right: -250px;
+                /* oculto a la derecha */
+                height: 100vh;
+                width: 250px;
+                transform: none;
+                display: block;
+                opacity: 1;
+                pointer-events: auto;
+                background-color: #fff;
+                box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+                transition: right 0.3s ease;
+            }
 
-    .sidebar ul {
-        margin-top: 3rem;
-    }
+            .sidebar.visible {
+                right: 0;
+            }
 
-    .sidebar a {
-        padding: 1rem;
-        font-size: 1.1rem;
-    }
-}
+            .sidebar ul {
+                margin-top: 3rem;
+            }
+
+            .sidebar a {
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
+        }
 
 
         @media (min-width: 1024px) {
@@ -603,25 +609,30 @@
         }
 
         /* Ajustes responsivos para móvil */
-@media (max-width: 768px) {
-  .alojamiento {
-    padding: 2rem 1rem; /* menos espacio lateral */
-  }
+        @media (max-width: 768px) {
+            .alojamiento {
+                padding: 2rem 1rem;
+                /* menos espacio lateral */
+            }
 
-  .alojamiento p {
-    padding: 1rem;      /* quitar el padding brutal */
-    font-size: 1.2rem;  /* letra un poco más pequeña */
-  }
+            .alojamiento p {
+                padding: 1rem;
+                /* quitar el padding brutal */
+                font-size: 1.2rem;
+                /* letra un poco más pequeña */
+            }
 
-  .alojamiento-grid {
-    grid-template-columns: 1fr; /* ya está, pero aseguramos */
-    gap: 1.5rem;
-  }
+            .alojamiento-grid {
+                grid-template-columns: 1fr;
+                /* ya está, pero aseguramos */
+                gap: 1.5rem;
+            }
 
-  .alojamiento-item {
-    padding: 1rem; /* consistente con el resto */
-  }
-}
+            .alojamiento-item {
+                padding: 1rem;
+                /* consistente con el resto */
+            }
+        }
 
 
 
@@ -662,24 +673,23 @@
         }
 
         .map-container {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* relación 16:9 */
-  height: 0;
-  overflow: hidden;
-  border-radius: 12px;
-}
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            /* relación 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+        }
 
-.map-container iframe {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-
-
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
     </style>
 </head>
 
@@ -705,11 +715,9 @@
             <div class="map-container">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4217.08387216863!2d-3.8660000229850127!3d40.90328247136535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd415dc79b1702e7%3A0x6f12d8fa4a9056f1!2sFinca%20Los%20Calizos!5e1!3m2!1ses!2ses!4v1756200124534!5m2!1ses!2ses"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div>
-              
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
         </div>
     </section>
 
@@ -726,10 +734,10 @@
                 pena citar antes para no llegar tarde, es este. A vuestra llegada tendréis unos cuantos refrescos,
                 cervezas y aguas de sabores y Guille os irá recibiendo (si no os gusta la conversación, no os
                 preocupéis, para eso están las cervezas).</p>
-            <p>A las 20:00 empezará el coctel de pie, donde podréis empezar a comer; habrá 18 pases, además de varios
+            <p>A las 20:00 empezará el coctel de pie, donde podréis empezar a comer; habrá 13 pases, además de varios
                 puestos de comida, así que podéis venir con hambre. Dos horas después, a las 22:00, comenzará el
                 banquete con sorbete, segundo y postres.</p>
-            <p>Por último, de 00:00 a 05:00 empezará la fiesta. Sabemos que venís por ver cómo nos casamos pero que, en
+            <p>Por último, de 00:00 a 05:00 tendrá lugar la fiesta. Sabemos que venís por ver cómo nos casamos pero que, en
                 realidad, lo que más os llama es esto: no os preocupéis, habrá mil sorpresas a lo largo de la noche.</p>
             </p>
         </div>
@@ -757,8 +765,9 @@
                     (622165911) que será la encargada de echar una mano. Ella es nuestra wedding planner y os ayudará
                     con cualquier detalle.</p>
                 <p><strong>Sorpresas:</strong> ¿Queréis darnos alguna sorpresa que organicéis para el día de nuestra
-                    boda? ¿Creéis que este es nuestro día, pero queréis ser vosotros los protagonistas? Poneos en
-                    contacto con Noelia, nuestra wedding planner y ella os ayudará a
+                    boda? ¿Creéis que este es nuestro día, pero queréis ser vosotros los protagonistas? Sea una sorpresa
+                    o un regalo o querer hacer un baile con una canción (o cualquier otra cosa que se os ocurra), poneos
+                    en contacto con Noelia, nuestra wedding planner y ella os ayudará a
                     organizarla sin que nosotros sepamos nada de nada. Si lo que queréis es hablar durante la ceremonia,
                     podéis escribir a Mario (654 474 681) o Yoli (678 911 998), que serán los maestros de ceremonias
                     (aunque no prometemos que
@@ -859,9 +868,9 @@
     </section>
 
     <!-- Botón burger (solo visible en móvil) -->
-<button class="burger" id="burger">
-    ☰
-</button>
+    <button class="burger" id="burger">
+        ☰
+    </button>
 
     <nav class="sidebar" id="sidebar">
         <ul>
@@ -877,28 +886,30 @@
     <script>
         const sidebar = document.getElementById("sidebar");
         const burger = document.getElementById("burger");
-        const sections = document.querySelectorAll("section[id]");
+        const sections = document.querySelectorAll("section[id]:not(#alojamiento)");
         const navLinks = document.querySelectorAll(".sidebar a");
-    
+
         // Burger: mostrar/ocultar menú en móvil
         burger.addEventListener("click", () => {
             sidebar.classList.toggle("visible");
         });
-    
+
         // Scroll suave y cerrar menú en móvil al hacer click
         navLinks.forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener("click", function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth' });
-    
+                const target = document.querySelector(this.getAttribute("href"));
+                if (target) {
+                    target.scrollIntoView({ behavior: "smooth" });
+                }
+
                 // Cerrar menú solo en móvil
                 if (window.innerWidth <= 768) {
                     sidebar.classList.remove("visible");
                 }
             });
         });
-    
+
         // Mostrar el sidebar flotante en escritorio según scroll
         window.addEventListener("scroll", () => {
             if (window.innerWidth > 768) { // solo escritorio
@@ -909,23 +920,29 @@
                 }
             }
         });
-    
-        // Intersección para detectar sección activa
+
+        // Intersección para detectar sección activa (centrada en viewport)
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     navLinks.forEach(link => {
-                        link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+                        link.classList.toggle(
+                            "active",
+                            link.getAttribute("href") === "#" + entry.target.id
+                        );
                     });
                 }
             });
         }, {
-            threshold: 0.6 // Sección visible al menos al 60%
+            root: null,
+            rootMargin: "-40% 0px -40% 0px", // activa cuando la sección ocupa el centro
+            threshold: 0
         });
-    
+
         sections.forEach(section => observer.observe(section));
     </script>
-    
+
+
 
 
 </body>
