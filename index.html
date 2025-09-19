@@ -4,11 +4,36 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>¡Nos casamos!</title>
+
+    <!-- SEO básico -->
+    <title>Pedazo Boda 🎉 - Patri y Guille se casan</title>
+    <meta name="description"
+        content="¡Patri y Guille se casan! Toda la información sobre la boda: la finca, el plan, alojamientos, confirmación y más.">
+
+    <!-- Open Graph (para WhatsApp, Facebook, Instagram DMs, LinkedIn...) -->
+    <meta property="og:title" content="Pedazo Boda 🎉 - Patri y Guille se casan">
+    <meta property="og:description"
+        content="¡Patri y Guille se casan! Toda la información sobre la boda: la finca, el plan, alojamientos, confirmación y más.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/social-preview.jpg">
+    <meta property="og:url" content="https://pedazoboda.es">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card (por si alguien lo comparte ahí) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pedazo Boda 🎉 - Patri y Guille se casan">
+    <meta name="twitter:description"
+        content="¡Patri y Guille se casan! Toda la información sobre la boda: la finca, el plan, alojamientos, confirmación y más.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/social-preview.jpg">
+
+    <!-- Opcional: favicon -->
+    <link rel="icon" href="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/favicon.jpg" type="image/x-icon">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Source+Sans+3:wght@300;400;600&display=swap"
         rel="stylesheet">
+
     <script async src="https://tally.so/widgets/embed.js"></script>
+
     <style>
         /* Tipografía y colores base */
         body {
@@ -436,17 +461,72 @@
 
         /* Sidebar - móvil */
         @media (max-width: 768px) {
+
+            /* Estilos base del burger */
+            /* Botón burger */
             .burger {
-                display: block;
+                display: none;
+                /* oculto en escritorio */
                 position: fixed;
                 top: 1rem;
                 right: 1rem;
-                z-index: 1100;
+                width: 30px;
+                height: 22px;
+                cursor: pointer;
                 background: none;
                 border: none;
-                font-size: 2rem;
-                cursor: pointer;
+                z-index: 1100;
+                padding: 0;
             }
+
+            /* líneas del burger */
+            .burger span {
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: #333;
+                border-radius: 3px;
+                transition: all 0.3s ease;
+            }
+
+            /* posiciones iniciales */
+            .burger span:nth-child(1) {
+                top: 0;
+            }
+
+            .burger span:nth-child(2) {
+                top: 9px;
+            }
+
+            .burger span:nth-child(3) {
+                bottom: 0;
+            }
+
+            /* estado activo → X */
+            .burger.active span:nth-child(1) {
+                top: 9px;
+                transform: rotate(45deg);
+            }
+
+            .burger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .burger.active span:nth-child(3) {
+                top: 9px;
+                transform: rotate(-45deg);
+            }
+
+            /* Sólo visible en móvil */
+            @media (max-width: 768px) {
+                .burger {
+                    display: block;
+                }
+            }
+
+
+
 
             .sidebar {
                 top: 0;
@@ -737,7 +817,8 @@
             <p>A las 20:00 empezará el coctel de pie, donde podréis empezar a comer; habrá 13 pases, además de varios
                 puestos de comida, así que podéis venir con hambre. Dos horas después, a las 22:00, comenzará el
                 banquete con sorbete, segundo y postres.</p>
-            <p>Por último, de 00:00 a 05:00 tendrá lugar la fiesta. Sabemos que venís por ver cómo nos casamos pero que, en
+            <p>Por último, de 00:00 a 05:00 tendrá lugar la fiesta. Sabemos que venís por ver cómo nos casamos pero que,
+                en
                 realidad, lo que más os llama es esto: no os preocupéis, habrá mil sorpresas a lo largo de la noche.</p>
             </p>
         </div>
@@ -793,12 +874,6 @@
             </div>
 
             <div class="alojamiento-item">
-                <div class="nombre"><strong>Casas Antiguas del Valle</strong></div>
-                <div class="telefono">649 588 981 (Fabiola)</div>
-                <div class="web"><a href="http://www.casasantiguasdelvalle.es/">casasantiguasdelvalle.es</a></div>
-            </div>
-
-            <div class="alojamiento-item">
                 <div class="nombre"><strong>Apartamentos La Cabaña</strong></div>
                 <div class="telefono">669701504</div>
                 <div class="web"><a
@@ -809,25 +884,33 @@
             <div class="alojamiento-item">
                 <div class="nombre"><strong>Casa Rural El Bosque</strong></div>
                 <div class="telefono">636593914 (Mari Carmen)</div>
-                <div class="web"><a href="http://www.casaruralelbosque.es/">http://www.casaruralelbosque.es</a></div>
+                <div class="web"><a href="http://www.casaruralelbosque.es/">www.casaruralelbosque.es</a></div>
             </div>
 
             <div class="alojamiento-item">
                 <div class="nombre"><strong>Casa Granero</strong></div>
                 <div class="telefono">606362561</div>
-                <div class="web"><a href="http://www.casagranero.com/">http://www.casagranero.com</a></div>
+                <div class="web"><a href="http://www.casagranero.com/">www.casagranero.com</a></div>
             </div>
 
             <div class="alojamiento-item">
                 <div class="nombre"><strong>Hotel Rural El Valle</strong></div>
                 <div class="telefono">918691213</div>
-                <div class="web"><a href="http://www.hotelruralelvalle.com/">http://www.hotelruralelvalle.com</a></div>
+                <div class="web"><a href="http://www.hotelruralelvalle.com/">www.hotelruralelvalle.com</a></div>
+            </div>
+
+            <div class="alojamiento-item">
+                <div class="nombre"><strong>Casas Antiguas del Valle</strong></div>
+                <div class="telefono">649 588 981 (Fabiola)</div>
+                <div class="web"><a
+                        href="https://www.escapadarural.com/casa-rural/madrid/casas-antiguas-del-valle">www.escapadarural.com/casa-rural/madrid/casas-antiguas-del-valle</a>
+                </div>
             </div>
 
             <div class="alojamiento-item">
                 <div class="nombre"><strong>El Caserón de Trastámara</strong></div>
                 <div class="telefono">620233266 (Maribel)</div>
-                <div class="web"><a href="http://www.caserontrastamara.es/">http://www.caserontrastamara.es</a></div>
+                <div class="web"><a href="http://www.caserontrastamara.es/">www.caserontrastamara.es</a></div>
             </div>
         </div>
     </section>
@@ -865,12 +948,21 @@
             sientas obligado lo más mínimo. De corazón.</p>
         <p>Lo dicho. Hagamos este trámite rápido. Nuestro número de cuenta es:</p>
         <h2><strong>ES28 0182 5322 2100 0174 3748</strong></h2>
+        <div class="bg-claro-wrapper">
+            <div class="img-col descentrada">
+                <img
+                    src="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/Logo%20+%20ilustraci%C3%B3n%20transparente.png">
+            </div>
+        </div>
     </section>
 
     <!-- Botón burger (solo visible en móvil) -->
-    <button class="burger" id="burger">
-        ☰
+    <button class="burger" id="burger" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
     </button>
+
 
     <nav class="sidebar" id="sidebar">
         <ul>
@@ -892,6 +984,7 @@
         // Burger: mostrar/ocultar menú en móvil
         burger.addEventListener("click", () => {
             sidebar.classList.toggle("visible");
+            burger.classList.toggle("active"); // cambia a aspa
         });
 
         // Scroll suave y cerrar menú en móvil al hacer click
@@ -906,6 +999,7 @@
                 // Cerrar menú solo en móvil
                 if (window.innerWidth <= 768) {
                     sidebar.classList.remove("visible");
+                    burger.classList.remove("active"); // vuelve al ☰
                 }
             });
         });
@@ -935,16 +1029,13 @@
             });
         }, {
             root: null,
-            rootMargin: "-40% 0px -40% 0px", // activa cuando la sección ocupa el centro
+            rootMargin: "-40% 0px -40% 0px",
             threshold: 0
         });
 
         sections.forEach(section => observer.observe(section));
     </script>
-
-
-
-
+    
 </body>
 
 </html>
