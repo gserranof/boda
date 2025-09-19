@@ -14,7 +14,8 @@
     <meta property="og:title" content="Pedazo Boda 🎉 - Patri y Guille se casan">
     <meta property="og:description"
         content="¡Patri y Guille se casan! Toda la información sobre la boda: la finca, el plan, alojamientos, confirmación y más.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/social-preview.jpg">
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/social_preview.jpg">
     <meta property="og:url" content="https://pedazoboda.es">
     <meta property="og:type" content="website">
 
@@ -23,10 +24,12 @@
     <meta name="twitter:title" content="Pedazo Boda 🎉 - Patri y Guille se casan">
     <meta name="twitter:description"
         content="¡Patri y Guille se casan! Toda la información sobre la boda: la finca, el plan, alojamientos, confirmación y más.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/social-preview.jpg">
+    <meta name="twitter:image"
+        content="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/social_preview.jpg">
 
     <!-- Opcional: favicon -->
-    <link rel="icon" href="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="https://raw.githubusercontent.com/gserranof/boda/refs/heads/main/favicon.jpg"
+        type="image/x-icon">
 
     <link
         href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Source+Sans+3:wght@300;400;600&display=swap"
@@ -133,6 +136,12 @@
             flex-wrap: wrap;
             align-items: stretch;
         }
+
+        .bg-claro-wrapper:only-child,
+        .bg-claro-wrapper> :only-child {
+            margin: 0 auto;
+        }
+
 
         /* Flex normal dentro del wrapper */
         .section.bg-claro .bg-claro-wrapper {
@@ -324,6 +333,7 @@
                 padding: 2rem !important;
             }
         }
+
 
         .tally-btn {
             background-color: #d3a8b2;
@@ -719,7 +729,7 @@
         /* Regalo */
 
         .regalo {
-            padding: 20rem 2rem;
+            padding: 20rem 2rem 5rem 2rem;
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
@@ -740,6 +750,15 @@
             margin-bottom: 3rem;
         }
 
+        .regalo .bg-claro-wrapper {
+            justify-content: center;
+            /* centra flex items */
+        }
+
+        .regalo .img-col.descentrada {
+            margin: 0 auto;
+            /* fuerza el centrado del bloque */
+        }
 
         /* Titulares con Instrument Serif */
         h1,
@@ -1035,7 +1054,7 @@
 
         sections.forEach(section => observer.observe(section));
     </script>
-    
+
 </body>
 
 </html>
