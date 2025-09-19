@@ -789,6 +789,23 @@
             height: 100%;
             border: 0;
         }
+    
+
+        /* Mantener margen mínimo lateral en desktop */
+@media (min-width: 769px) {
+    section {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+        box-sizing: border-box;
+    }
+
+    /* Para secciones bg-claro que ocupan todo el ancho */
+    .section.bg-claro {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+}
+
     </style>
 </head>
 
